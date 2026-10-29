@@ -12,3 +12,15 @@ export type Addresses = {
 export type Args = {
   username: string;
 };
+
+export type AddressInput = {
+  state: string;
+  street: string;
+  city: string;
+  zipcode: string;
+};
+
+export type CreateAddArgs = {
+  username: string;
+  address: AddressInput;
+};

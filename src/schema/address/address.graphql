@@ -4,3 +4,10 @@ type Address {
   city: String
   zipcode: String
 }
+
+input AddressInput {
+  state: String!
+  street: String!
+  city: String!
+  zipcode: String!
+}
