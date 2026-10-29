@@ -15,26 +15,26 @@ const writeAddresses = async (addresses: Addresses): Promise<void> => {
 };
 
 export const getAddress = async (_: any, args: Args, context: any): Promise<Address> => {
-  context.logger.info('getAddress', 'Enter resolver');
+  context.logger.info('Enter resolver', { resolver: 'getAddress' });
   const addresses = await readAddresses();
   const address = addresses[args.username];
   if (address) {
-    context.logger.info('getAddress', 'Returning address');
+    context.logger.info('Returning address', { resolver: 'getAddress' });
     return address;
   }
-  context.logger.error('getAddress', 'No address found');
+  context.logger.error('No address found', { resolver: 'getAddress' });
   throw new GraphQLError('No address found in getAddress resolver');
 };
 
 export const createAddress = async (_: any, args: CreateAddArgs, context: any): Promise<Address> => {
-  context.logger.info('createAddress', 'Enter resolver');
+  context.logger.info('Enter resolver', { resolver: 'createAddress' });
   const addresses = await readAddresses();
   if (addresses[args.username]) {
-    context.logger.error('createAddress', 'Address already exists');
+    context.logger.error('Address already exists', { resolver: 'createAddress' });
     throw new GraphQLError('An address already exists');
   }
   addresses[args.username] = args.address;
   await writeAddresses(addresses);
-  context.logger.info('createAddress', 'Address created');
+  context.logger.info('Address created', { resolver: 'createAddress' });
   return args.address;
 };
