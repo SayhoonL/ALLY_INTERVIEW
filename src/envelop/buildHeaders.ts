@@ -4,9 +4,10 @@ import { ContextType } from '../types';
 
 export const buildHeaders = (): Plugin<ContextType> => {
   return {
-    onExecute({ extendContext }) {
+    onExecute({ args, extendContext }) {
       const requestId = uuid();
-      extendContext({ requestId: requestId });
+      const client = args.contextValue.request.headers.get('client');
+      extendContext({ requestId: requestId, client: client });
     },
   };
 };
