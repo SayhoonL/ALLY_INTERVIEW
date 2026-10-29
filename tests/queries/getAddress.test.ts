@@ -29,7 +29,8 @@ describe('getAddress', () => {
           city: 'Sometown',
           zipcode: '43215',
         }
-      }
+      },
+      metadata: { requestId: expect.any(String) },
     });
   });
 
