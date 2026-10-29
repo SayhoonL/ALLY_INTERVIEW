@@ -5,7 +5,6 @@
   "properties": {
     "element_count": { "type": "integer" },
     "near_earth_objects": {
-      "description": "Keyed by date (YYYY-MM-DD), so Mesh exposes it as a JSON scalar",
       "type": "object",
       "additionalProperties": {
         "type": "array",
