@@ -1,0 +1,6 @@
+query NeoFeed($startDate: String!, $endDate: String!) {
+  neoFeed(startDate: $startDate, endDate: $endDate) {
+    element_count
+    near_earth_objects
+  }
+}

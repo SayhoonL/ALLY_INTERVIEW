@@ -1,0 +1,26 @@
+sources:
+  - name: NasaNeo
+    handler:
+      jsonSchema:
+        endpoint: https://api.nasa.gov/neo/rest/v1
+        queryParams:
+          api_key: DEMO_KEY
+        operations:
+          - type: Query
+            field: neoFeed
+            path: /feed
+            method: GET
+            queryParamArgMap:
+              start_date: startDate
+              end_date: endDate
+            argTypeMap:
+              startDate:
+                type: string
+                nullable: false
+              endDate:
+                type: string
+                nullable: false
+            responseSchema: ./mesh/neo-feed.schema.json
+
+documents:
+  - ./mesh/neoFeed.graphql
